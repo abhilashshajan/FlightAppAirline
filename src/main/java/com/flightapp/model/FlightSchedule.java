@@ -16,7 +16,7 @@ public class FlightSchedule {
 	@NotBlank
 	@Size(max = 4)
 	private String flightNumber;
-
+	
 	@NotBlank
 	@Size(max = 3)
 	private String departureAirport;
@@ -40,17 +40,18 @@ public class FlightSchedule {
 	private String aircraftRegistration;
 	
 	@NotNull
-	private int businessSeatCount;
+	private int seatCount;
+		
+	@NotNull
+	private String ticketPrice;
 	
 	@NotNull
-	private int nonBusinessSeatCount;
-	
-	@NotNull
-	private String businessTicketCost;
-	
-	@NotNull
-	private String nonBusinessTicketCost;
-	
+	private Date updatedTime;
+		
+	@NotBlank
+	@Size(max = 20)
+	private String updatedBy;
+		
     @ManyToOne()
     private Airline airline;
 
@@ -60,9 +61,8 @@ public class FlightSchedule {
 	public FlightSchedule(Long id, @NotBlank @Size(max = 4) String flightNumber,
 			@NotBlank @Size(max = 3) String departureAirport, @NotBlank @Size(max = 3) String arrivalAirport,
 			@NotNull Date departureTime, @NotNull Date arrivalTime, @NotBlank @Size(max = 7) String frequency,
-			@NotBlank @Size(max = 10) String aircraftRegistration, @NotNull int businessSeatCount,
-			@NotNull int nonBusinessSeatCount, @NotNull String businessTicketCost,
-			@NotNull String nonBusinessTicketCost, Airline airline) {
+			@NotBlank @Size(max = 10) String aircraftRegistration, @NotNull int seatCount, @NotNull String ticketPrice,
+			@NotNull Date updatedTime, @NotBlank @Size(max = 20) String updatedBy, Airline airline) {
 		super();
 		this.id = id;
 		this.flightNumber = flightNumber;
@@ -72,10 +72,10 @@ public class FlightSchedule {
 		this.arrivalTime = arrivalTime;
 		this.frequency = frequency;
 		this.aircraftRegistration = aircraftRegistration;
-		this.businessSeatCount = businessSeatCount;
-		this.nonBusinessSeatCount = nonBusinessSeatCount;
-		this.businessTicketCost = businessTicketCost;
-		this.nonBusinessTicketCost = nonBusinessTicketCost;
+		this.seatCount = seatCount;
+		this.ticketPrice = ticketPrice;
+		this.updatedTime = updatedTime;
+		this.updatedBy = updatedBy;
 		this.airline = airline;
 	}
 
@@ -143,36 +143,36 @@ public class FlightSchedule {
 		this.aircraftRegistration = aircraftRegistration;
 	}
 
-	public int getBusinessSeatCount() {
-		return businessSeatCount;
+	public int getSeatCount() {
+		return seatCount;
 	}
 
-	public void setBusinessSeatCount(int businessSeatCount) {
-		this.businessSeatCount = businessSeatCount;
+	public void setSeatCount(int seatCount) {
+		this.seatCount = seatCount;
 	}
 
-	public int getNonBusinessSeatCount() {
-		return nonBusinessSeatCount;
+	public String getTicketPrice() {
+		return ticketPrice;
 	}
 
-	public void setNonBusinessSeatCount(int nonBusinessSeatCount) {
-		this.nonBusinessSeatCount = nonBusinessSeatCount;
+	public void setTicketPrice(String ticketPrice) {
+		this.ticketPrice = ticketPrice;
 	}
 
-	public String getBusinessTicketCost() {
-		return businessTicketCost;
+	public Date getUpdatedTime() {
+		return updatedTime;
 	}
 
-	public void setBusinessTicketCost(String businessTicketCost) {
-		this.businessTicketCost = businessTicketCost;
+	public void setUpdatedTime(Date updatedTime) {
+		this.updatedTime = updatedTime;
 	}
 
-	public String getNonBusinessTicketCost() {
-		return nonBusinessTicketCost;
+	public String getUpdatedBy() {
+		return updatedBy;
 	}
 
-	public void setNonBusinessTicketCost(String nonBusinessTicketCost) {
-		this.nonBusinessTicketCost = nonBusinessTicketCost;
+	public void setUpdatedBy(String updatedBy) {
+		this.updatedBy = updatedBy;
 	}
 
 	public Airline getAirline() {
@@ -183,6 +183,5 @@ public class FlightSchedule {
 		this.airline = airline;
 	}
 
-	
 	
 }

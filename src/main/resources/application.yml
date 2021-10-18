@@ -2,7 +2,7 @@ spring:
   application:
     name: flightapp-airline-service
   datasource:
-    url: jdbc:mysql://localhost:3306/flightapp?useSSL=false
+    url: jdbc:mysql://localhost:3306/flightapp?useSSL=false&allowPublicKeyRetrieval=true&createDatabaseIfNotExist=true
     username: root
     password: root
   jpa:
@@ -22,4 +22,4 @@ eureka:
 com:
   flightapp:
     jwtSecret: flightappSecretKey
-    jwtExpirationMs: 60000
+    jwtExpirationMs: 1800000

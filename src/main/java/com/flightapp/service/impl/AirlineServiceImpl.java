@@ -16,6 +16,17 @@ public class AirlineServiceImpl implements AirlineService {
 
 	@Autowired
 	AirlineRepository airlineRepository;
+
+	@Override
+	public Airline getAirlineById(long id) {
+		// TODO Auto-generated method stub
+		Airline airlineResp = new Airline();
+		Optional<Airline> optionalAirline = airlineRepository.findById(id);
+		if (optionalAirline.isPresent()) {
+			airlineResp = optionalAirline.get();
+		}
+		return airlineResp;
+	}
 	
 	@Override
 	public List<Airline> getAllAirlines() {
@@ -53,5 +64,6 @@ public class AirlineServiceImpl implements AirlineService {
 		// TODO Auto-generated method stub
 		airlineRepository.deleteById(airline.getId());
 	}
+
 
 }

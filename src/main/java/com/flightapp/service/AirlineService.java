@@ -6,6 +6,8 @@ import com.flightapp.model.Airline;
 
 public interface AirlineService {
 	
+	public Airline getAirlineById(long id);
+	
 	public List<Airline> getAllAirlines();
 	
 	public Airline addAirline(Airline airline);
